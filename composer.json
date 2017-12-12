@@ -1,0 +1,8 @@
+{
+    "name": "dsapps/menu",
+    "type": "codeigniter-module",
+    "require": {
+        "php": ">=5.3.7",
+        "composer/installers": "~1.0"
+    }
+}
