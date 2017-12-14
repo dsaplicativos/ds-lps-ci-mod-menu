@@ -7,6 +7,11 @@ class Navbar extends ORMObject{
     private $id = '';
     private $title = 'Dentalbit';
     private $menu_list = array();
+    private $bgColor = array();
+    private $textColor = 'dark';
+    private $containerFluid = false;
+    private $toggleSide = 'right';
+    private $toggleScreen = 'md';
 
     public function __construct(){
         parent::__construct('menu');
