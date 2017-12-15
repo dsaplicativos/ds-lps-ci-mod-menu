@@ -89,16 +89,15 @@ class Navbar extends ORMObject{
         $this->id = $val;
     }
 
-
     public function getHTML(){
-        return '<nav class="navbar navbar-expand-' . $this->toggleScreen . ' fixed-top navbar-'. $this->textColor . ' ' . $this->bgColor['class'] . ' bg-faded scrolling-navbar" style="' . $this->bgColor['style'] . '">
-                <div class="'. ($this->containerFluid == true ? 'container-fluid' : 'container') . '">
-                    <button class="navbar-toggler navbar-toggler-'. $this->toggleSide . '" type="button" data-toggle="collapse" data-target="#'.$this->id.'" aria-controls="'.$this->id.'" aria-expanded="false" aria-label="Toggle navigation">
+        return '<nav class="navbar navbar-toggleable-'. $this->toggleScreen . ' fixed-top navbar-'. $this->textColor . ' ' . $this->bgColor['class'] . ' bg-faded scrolling-navbar" style="' . $this->bgColor['style'] . '">
+                ' . ($this->containerFluid == true ? '' : '<div class="container">') . '
+                    <button class="navbar-toggler float-' . $this->toggleSide . '" type="button" data-toggle="collapse" data-target="#'.$this->id.'" aria-controls="'.$this->id.'" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand waves-effect waves-light" href="<?= base_url() ?>" >'.$this->title.'</a>
+                    <a class="navbar-brand ' . ($this->containerFluid == true ? 'text-center' : '') . ' waves-effect waves-light" href="<?= base_url() ?>" >'.$this->title.'</a>
                     <div class="collapse navbar-collapse" id="'.$this->id.'">'.$this->getItens().'</div>        
-                </div>
+                ' . ($this->containerFluid == true ? '' : '</div>') . '
             </nav>';
     }
 
