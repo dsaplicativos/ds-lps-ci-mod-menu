@@ -7,7 +7,7 @@ class Navbar extends ORMObject{
     private $id = '';
     private $title = 'Dentalbit';
     private $menu_list = array();
-    private $bgColor = array();
+    private $bgColor = array('class' => '', 'style' => '');
     private $textColor = 'dark';
     private $containerFluid = false;
     private $toggleSide = 'right';
