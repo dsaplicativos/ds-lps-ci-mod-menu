@@ -62,9 +62,9 @@ class Navbar extends ORMObject{
      * Default: false
      * @param boolean $fluid
      */
-    public function setContainerFluid($fluid) {
-        $this->containerFluid = $fluid;
-    }
+//    public function setContainerFluid($fluid) {
+//        $this->containerFluid = $fluid;
+//    }
 
     /**
      * Define o lado onde aparecerá o botão de ampliar/reduzir a navbar.
