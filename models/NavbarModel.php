@@ -7,6 +7,9 @@ class NavbarModel extends CI_Model{
         $navbar = new Navbar();
         $navbar->id('my_navbar');
         $navbar->load($type);
+        $navbar->setBackgroundColor('bg-primary');
+        $navbar->setTextColor('light');
+        $navbar->setToggleSide('left');
         return $navbar->getHTML();
     }
 
