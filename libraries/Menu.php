@@ -31,15 +31,16 @@ class Menu extends ORMObject{
     /**
      * Carrega os itens deste menu
      */
-    private function loadItens(){
+    private function loadItens($dropdownColor){
         $v = array('parent' => $this->menu['id']);
         $u = $this->dao->getWhere($v, true);
         $this->item_list = $u;
 
         if(sizeof($u) == 0) return;
-        $this->toggle = 'dropdown-toggle';
+        $this->toggle['li'] = 'dropdown';
+        $this->toggle['a'] = 'dropdown-toggle';
         $this->extra_data = 'id="dropdown_'.$this->menu['id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"';
-        $html = '<div class="dropdown-menu" aria-labelledby="dropdown_'.$this->menu['id'].'">';
+        $html = '<div class="dropdown-menu dropdown-' . $dropdownColor . '" aria-labelledby="dropdown_'.$this->menu['id'].'">';
         foreach($u AS $item){
             $menuitem = new MenuItem($item);
             $html .= $menuitem->getHTML();
