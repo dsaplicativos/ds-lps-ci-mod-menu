@@ -8,22 +8,22 @@ class Menu extends ORMObject{
     private $menu;
     private $item_list;
     private $group = '';
-    private $toggle = '';
+    private $toggle = array('a' => '', 'li' => '');
     private $extra_data = '';
     private $extra_content = '';
 
-    function __construct($menu){
+    function __construct($menu, $dropdownColor){
         parent::__construct('menu');
         $this->menu = $menu;
-        $this->loadItens();
+        $this->loadItens($dropdownColor);
     }
 
     /**
      * Retorna os itens deste menu
      */
     public function getHTML($active = ''){
-        $html = '<li class="nav-item '.$active.' '.$this->group.'">';
-        $html .= '<a href="'.$this->menu['link'].'" class="nav-link '.$this->toggle.'" '.$this->extra_data.'>'.$this->menu['label'].'</a>';
+        $html = '<li class="nav-item ' . $active . ' ' . $this->toggle['li'] . ' ' . $this->group . '">';
+        $html .= '<a href="'.$this->menu['link'].'" class="nav-link '.$this->toggle['a'].'" '.$this->extra_data.'>'.$this->menu['label'].'&nbsp;</a>';
         $html .= $this->extra_content;
         return $html.'</li>';
     }
