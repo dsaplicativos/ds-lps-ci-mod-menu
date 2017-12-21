@@ -57,23 +57,31 @@ class Navbar extends ORMObject{
     }
 
     /**
+     * Define a cor de hover no menu dropdown
+     * @see https://mdbootstrap.com/components/dropdowns/#material-dropdowns
+     * @param string $color
+     */
+    public function setDropdownColor($color) {
+        $this->dropdownColor = $color;
+    }
+
+    /**
+     * Define a exibição da barra de pesquisa
+     * @param boolean $search
+     */
+    public function setSearchBar($search) {
+        $this->search = $search;
+    }
+
+    /**
      * Define a largura do conteúdo da navbar.
      * True: container-fluid
      * False: container
      * Default: false
      * @param boolean $fluid
      */
-//    public function setContainerFluid($fluid) {
-//        $this->containerFluid = $fluid;
-//    }
-
-    /**
-     * Define o lado onde aparecerá o botão de ampliar/reduzir a navbar.
-     * Default: right
-     * @param string $side = "left" ou "right"
-     */
-    public function setToggleSide($side) {
-        $this->toggleSide = $side;
+    public function setContainerFluid($fluid) {
+        $this->containerFluid = $fluid;
     }
 
     /**
