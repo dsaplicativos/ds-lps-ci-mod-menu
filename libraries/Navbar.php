@@ -10,8 +10,9 @@ class Navbar extends ORMObject{
     private $bgColor = array('class' => '', 'style' => '');
     private $textColor = 'dark';
     private $containerFluid = false;
-    private $toggleSide = 'right';
     private $toggleScreen = 'md';
+    private $search = false;
+    private $dropdownColor = 'primary';
 
     public function __construct(){
         parent::__construct('menu');
