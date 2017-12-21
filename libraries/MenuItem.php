@@ -28,7 +28,7 @@ class MenuItem extends ORMObject{
             return '<a class="dropdown-item">'.$this->item['label'].'</a>';
         else{
             $html  = '<div class="dropdown-submenu">';
-            $html .= '<a class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown" href="'.$this->item['link'].'">'.$this->item['label'].'</a>';
+            $html .= '<a class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown" href="'.$this->item['link'].'">'.$this->item['label'].'&nbsp;</a>';
             $html .= '<div class="dropdown-menu">';
 
             foreach($this->item_list AS $item){
