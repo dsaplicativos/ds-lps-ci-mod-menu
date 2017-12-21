@@ -98,27 +98,57 @@ class Navbar extends ORMObject{
         $this->id = $val;
     }
 
-    public function getHTML(){
-        return '<nav class="navbar navbar-toggleable-'. $this->toggleScreen . ' fixed-top navbar-'. $this->textColor . ' ' . $this->bgColor['class'] . ' bg-faded scrolling-navbar" style="' . $this->bgColor['style'] . '">
-                ' . ($this->containerFluid == true ? '' : '<div class="container">') . '
-                    <button class="navbar-toggler float-' . $this->toggleSide . '" type="button" data-toggle="collapse" data-target="#'.$this->id.'" aria-controls="'.$this->id.'" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <a class="navbar-brand ' . ($this->containerFluid == true ? 'text-center' : '') . ' waves-effect waves-light" href="<?= base_url() ?>" >'.$this->title.'</a>
-                    <div class="collapse navbar-collapse" id="'.$this->id.'">'.$this->getItens().'</div>        
-                ' . ($this->containerFluid == true ? '' : '</div>') . '
+    public function getHTML($user = null){
+        return '<nav class="navbar navbar-expand-'. $this->toggleScreen . ' fixed-top navbar-'. $this->textColor . ' ' . $this->bgColor['class'] . ' bg-faded scrolling-navbar" style="' . $this->bgColor['style'] . '">
+                    ' . ($this->containerFluid == false ? '' : '<div class="container">') . '
+                        <a class="navbar-brand" href="<?= base_url() ?>" >'.$this->title.'</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#'.$this->id.'" aria-controls="'.$this->id.'" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="'.$this->id.'">'.$this->getItems($user).'</div>        
+                    ' . ($this->containerFluid == false ? '' : '</div>') . '
             </nav>';
     }
 
-    private function getItens(){
+    private function getItems($user = null) {
+        $items = $this->getLeftItems() . ($user != null ? $this->getRightItems($user) : '');
+        return $items;
+    }
+
+    private function getLeftItems(){
         $html = '<ul class="navbar-nav mr-auto">';
         foreach($this->menu_list AS $row){
-            $menu = new Menu($row);
+            $menu = new Menu($row, $this->dropdownColor);
             $html .= $menu->getHTML();
         }
         return $html . '</ul>';
     }
 
+    private function getUserMenu($user = null) {
+        $html = '<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>';
+        $html .= '&nbsp;' . $user->first_name;
+        $html .= '</a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-dark" aria-labelledby="navbarDropdownMenuLink-4">
+                    <a class="dropdown-item waves-effect waves-light" href="<?= base_url(\'/auth/change_password\') ?>"><i
+                                class="fa fa-lock fa-fw"></i>&nbsp;Trocar senha</a>
+                    <a class="dropdown-item waves-effect waves-light" href="<?= base_url(\'/auth/logout\') ?>"><i
+                                class="fa fa-sign-out fa-fw"></i>&nbsp;Sair</a>
+                </div>
+                </li>';
+        return $html;
+    }
+
+    private function getRightItems($user = null) {
+        $html = '<ul class="navbar-nav ml-auto">';
+        $html .= $this->search == true ? '<form class="form-inline mx-2">
+                    <input type="text" class="form-control filtro-nome" alt="table" placeholder="Pesquisar"
+                           aria-describedby="basic-addon1">
+                </form>' : '';
+        $html .= $this->getUserMenu($user);
+        return $html . '</ul>';
+    }
 
     public function getObjectData(){}
 }
