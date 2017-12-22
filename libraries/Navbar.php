@@ -115,19 +115,22 @@ class Navbar extends ORMObject{
     }
 
     public function getHTML($user = null){
+        $ci = &get_instance();
         return '<nav class="navbar navbar-expand-'. $this->toggleScreen . ' fixed-top navbar-'. $this->textColor . ' ' . $this->bgColor['class'] . ' bg-faded scrolling-navbar" style="' . $this->bgColor['style'] . '">
                     ' . ($this->containerFluid == false ? '' : '<div class="container">') . '
-                        <a class="navbar-brand" href="<?= base_url() ?>" >'.$this->title.'</a>
+                        <a class="navbar-brand" href="' . base_url() . '" >
+                        ' . ($this->brand == null ? $this->title : '<img src="' . base_url($this->brand) . '" width="62" alt="">') . '
+                        </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#'.$this->id.'" aria-controls="'.$this->id.'" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="'.$this->id.'">'.$this->getItems($user).'</div>        
                     ' . ($this->containerFluid == false ? '' : '</div>') . '
-            </nav>';
+            </nav>' . ($user != null ? '' : $ci->load->view('menu/loginModal', null, true));
     }
 
     private function getItems($user = null) {
-        $items = $this->getLeftItems() . ($user != null ? $this->getRightItems($user) : '');
+        $items = $this->getLeftItems() . $this->getRightItems($user);
         return $items;
     }
 
