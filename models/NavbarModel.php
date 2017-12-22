@@ -3,11 +3,11 @@ include_once APPPATH.'modules/menu/libraries/Navbar.php';
 
 class NavbarModel extends CI_Model{
 
-    public function getHTML($type){
+    public function getHTML($type, $user = null){
         $navbar = new Navbar();
         $navbar->id('my_navbar');
         $navbar->load($type);
-        return $navbar->getHTML();
+        return $navbar->getHTML($user);
     }
 
 }
