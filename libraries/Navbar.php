@@ -32,6 +32,7 @@ class Navbar extends ORMObject{
     /**
      * Recebe uma string que define a cor do plano de fundo da navbar.
      * Cores hexadecimais devem, OBRIGATORIAMENTE, conter "#"
+     * @see https://mdbootstrap.com/css/colors/
      * @param string $color
      */
     public function setBackgroundColor($color) {
@@ -47,8 +48,7 @@ class Navbar extends ORMObject{
 
     /**
      * Define a cor do texto de acordo com a cor do fundo.
-     * Para fundos escuros, envie "dark": tornará o texto branco.
-     * Para fundos claros, envie "light": tornará o texto preto.
+     * @see https://mdbootstrap.com/angular/components/navbars/#color-schemes
      * Default: dark
      * @param string $color
      */
@@ -75,8 +75,7 @@ class Navbar extends ORMObject{
 
     /**
      * Define a largura do conteúdo da navbar.
-     * True: container-fluid
-     * False: container
+     * @see https://mdbootstrap.com/layout/bootstrap-layout/#introduction
      * Default: false
      * @param boolean $fluid
      */
@@ -86,7 +85,7 @@ class Navbar extends ORMObject{
 
     /**
      * Define a largura inicial de expansão (apresentação em formato ampliado) da navbar
-     * Utilize as siglas de grid do bootstrap
+     * @see https://mdbootstrap.com/layout/layout-grid/#grid-options
      * Default: md
      * @param string $size
      */
