@@ -5,7 +5,7 @@ include_once APPPATH . 'modules/menu/libraries/Menu.php';
 class Navbar extends ORMObject{
     private $db;
     private $id = '';
-    private $title = 'Dentalbit';
+    private $title = '';
     private $menu_list = array();
     private $bgColor = array('class' => '', 'style' => '');
     private $textColor = 'dark';
@@ -27,6 +27,14 @@ class Navbar extends ORMObject{
 
     public function getMenuList(){
         return $this->menu_list;
+    }
+
+    /**
+     * Define o título, onde ficará o link para a página inicial.
+     * @param string $title
+     */
+    public function setTitle($title) {
+        $this->title = $title;
     }
 
     /**
