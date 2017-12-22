@@ -13,6 +13,7 @@ class Navbar extends ORMObject{
     private $toggleScreen = 'md';
     private $search = false;
     private $dropdownColor = 'primary';
+    private $brand = null;
 
     public function __construct(){
         parent::__construct('menu');
@@ -35,6 +36,14 @@ class Navbar extends ORMObject{
      */
     public function setTitle($title) {
         $this->title = $title;
+    }
+
+    /**
+     * Recebe a url da imagem e a define o título da barra de navegação
+     * @param string $brand
+     */
+    public function setBrand($brand) {
+        $this->brand = $brand;
     }
 
     /**
