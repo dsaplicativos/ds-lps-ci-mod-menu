@@ -59,7 +59,7 @@ class Navbar extends ORMObject{
         }
         else {
             $this->bgColor['class'] = '';
-            $this->bgColor['style'] = 'color: ' . $color . ';';
+            $this->bgColor['style'] = 'background-color: ' . $color . ';';
         }
     }
 
