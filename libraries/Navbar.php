@@ -3,18 +3,33 @@ include_once APPPATH . 'libraries/util/ORMObject.php';
 include_once APPPATH . 'modules/menu/libraries/Menu.php';
 
 class Navbar extends ORMObject{
+
     private $db;
     private $id = '';
-    private $title = '';
     private $menu_list = array();
-    private $bgColor = array('class' => '', 'style' => '');
-    private $textColor = 'dark';
-    private $containerFluid = false;
-    private $toggleScreen = 'md';
-    private $search = false;
-    private $dropdownColor = 'primary';
+
+    /**
+     * Title properties
+     */
+    private $title = '';
     private $brand = null;
     private $brandSize = null;
+    /**
+     * Color properties
+     */
+    private $bgColor = array('class' => '', 'style' => '');
+    private $textColor = 'dark';
+    private $dropdownColor = 'primary';
+    /**
+     * Size properties
+     */
+    private $containerFluid = false;
+    private $toggleScreen = 'md';
+    private $marginBottom = null;
+    /**
+     * Content properties
+     */
+    private $search = false;
 
     public function __construct(){
         parent::__construct('menu');
@@ -177,4 +192,5 @@ class Navbar extends ORMObject{
     }
 
     public function getObjectData(){}
+    
 }
