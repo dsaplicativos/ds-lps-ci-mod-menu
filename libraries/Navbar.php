@@ -14,6 +14,7 @@ class Navbar extends ORMObject{
     private $search = false;
     private $dropdownColor = 'primary';
     private $brand = null;
+    private $brandSize = null;
 
     public function __construct(){
         parent::__construct('menu');
@@ -44,6 +45,14 @@ class Navbar extends ORMObject{
      */
     public function setBrand($brand) {
         $this->brand = $brand;
+    }
+
+    /**
+     * Define a largura, em pixels, da imagem de título
+     * @param int $size
+     */
+    public function setBrandSize($size) {
+        $this->brandSize = $size;
     }
 
     /**
@@ -119,7 +128,7 @@ class Navbar extends ORMObject{
         return '<nav class="navbar navbar-expand-'. $this->toggleScreen . ' fixed-top navbar-'. $this->textColor . ' ' . $this->bgColor['class'] . ' bg-faded scrolling-navbar" style="' . $this->bgColor['style'] . '">
                     ' . ($this->containerFluid == false ? '' : '<div class="container">') . '
                         <a class="navbar-brand" href="' . base_url() . '" >
-                        ' . ($this->brand == null ? $this->title : '<img src="' . base_url($this->brand) . '" width="62" alt="">') . '
+                        ' . ($this->brand == null ? $this->title : '<img src="' . base_url($this->brand) . '" width="' . ($this->brandSize == null ? '62' : $this->brandSize) . '" alt="">') . '
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#'.$this->id.'" aria-controls="'.$this->id.'" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
