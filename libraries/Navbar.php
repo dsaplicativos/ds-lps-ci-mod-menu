@@ -125,6 +125,15 @@ class Navbar extends ORMObject{
     }
 
     /**
+     * Adiciona uma div, cuja margem vertical é o valor informado
+     * @param int $margin
+     * @see https://mdbootstrap.com/utilities/bootstrap-spacing/
+     */
+    public function setMarginBottom($margin) {
+        $this->marginBottom = $margin;
+    }
+
+    /**
      * Define a largura inicial de expansão (apresentação em formato ampliado) da navbar
      * @see https://mdbootstrap.com/layout/layout-grid/#grid-options
      * Default: md
@@ -150,7 +159,7 @@ class Navbar extends ORMObject{
                         </button>
                         <div class="collapse navbar-collapse" id="'.$this->id.'">'.$this->getItems($user).'</div>        
                     ' . ($this->containerFluid == false ? '' : '</div>') . '
-            </nav>' . ($user != null ? '' : $ci->load->view('menu/loginModal', null, true));
+            </nav>' . ($this->marginBottom == null ? '' : '<div class="my-' . $this->marginBottom . '">&nbsp;</div>') . ($user != null ? '' : $ci->load->view('menu/loginModal', null, true));
     }
 
     private function getItems($user = null) {
@@ -192,5 +201,5 @@ class Navbar extends ORMObject{
     }
 
     public function getObjectData(){}
-    
+
 }
