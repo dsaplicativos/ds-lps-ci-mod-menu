@@ -159,7 +159,7 @@ class Navbar extends ORMObject{
                         </button>
                         <div class="collapse navbar-collapse" id="'.$this->id.'">'.$this->getItems($user).'</div>        
                     ' . ($this->containerFluid == false ? '' : '</div>') . '
-            </nav>' . ($this->marginBottom == null ? '' : '<div class="my-' . $this->marginBottom . '">&nbsp;</div>') . ($user != null ? '' : $ci->load->view('menu/loginModal', null, true));
+            </nav>' . ($this->marginBottom == null ? '' : '<div class="py-' . $this->marginBottom . '">&nbsp;</div>') . ($user != null ? '' : $ci->load->view('menu/loginModal', null, true));
     }
 
     private function getItems($user = null) {
