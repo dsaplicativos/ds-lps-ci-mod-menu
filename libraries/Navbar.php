@@ -1,5 +1,5 @@
 <?php
-include_once APPPATH . 'libraries/util/ORMObject.php';
+include_once APPPATH . 'libraries/util_libs/ORMObject.php';
 include_once APPPATH . 'modules/menu/libraries/Menu.php';
 
 class Navbar extends ORMObject{

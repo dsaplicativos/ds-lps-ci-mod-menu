@@ -1,6 +1,6 @@
 <?php
 if (! defined ( 'BASEPATH' )) exit ( 'No direct script access allowed' );
-include_once APPPATH . 'libraries/util/ORMObject.php';
+include_once APPPATH . 'libraries/util_libs/ORMObject.php';
 include_once 'MenuItem.php';
 
 
