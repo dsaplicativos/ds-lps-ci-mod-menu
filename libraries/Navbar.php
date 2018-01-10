@@ -1,5 +1,5 @@
 <?php
-include_once APPPATH . 'libraries/util_libs/ORMObject.php';
+include_once APPPATH . 'libraries/util/ORMObject.php';
 include_once APPPATH . 'modules/menu/libraries/Menu.php';
 
 class Navbar extends ORMObject{
@@ -35,9 +35,10 @@ class Navbar extends ORMObject{
         parent::__construct('menu');
     }
 
-    public function load($type){
+    public function load($type, $context = 1){
         $v[$type] = 1;
         $v['parent'] = 0;
+        $v['context'] = $context;
         $rs = $this->dao->getWhere($v, true);
         $this->menu_list = $rs;
     }

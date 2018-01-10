@@ -1,6 +1,6 @@
 <?php
 if (! defined ( 'BASEPATH' )) exit ( 'No direct script access allowed' );
-include_once APPPATH . 'libraries/util_libs/ORMObject.php';
+include_once APPPATH . 'libraries/util/ORMObject.php';
 include_once 'MenuItem.php';
 
 
@@ -72,6 +72,11 @@ class Menu extends ORMObject{
                 'type' => 'VARCHAR',
                 'constraint' => '60',
 				'null'       => TRUE
+            ),
+            'context' => array(
+                'type' => 'INT',
+                'constraint' => 2,
+                'default' => 1
             ),
             'parent' => array(
                 'type' => 'INT',
