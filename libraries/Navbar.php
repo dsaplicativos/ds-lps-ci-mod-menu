@@ -40,6 +40,11 @@ class Navbar extends ORMObject{
         $v['parent'] = 0;
         $v['context'] = $context;
         $rs = $this->dao->getWhere($v, true);
+        
+        usort($rs, function($a, $b) {
+            return $a['menu_order'] - $b['menu_order'];
+        });
+
         $this->menu_list = $rs;
     }
 
