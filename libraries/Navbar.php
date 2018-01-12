@@ -155,7 +155,7 @@ class Navbar extends ORMObject{
 
     public function getHTML($user = null){
         $ci = &get_instance();
-        return '<nav class="navbar navbar-expand-'. $this->toggleScreen . ' fixed-top navbar-'. $this->textColor . ' ' . $this->bgColor['class'] . ' bg-faded scrolling-navbar" style="' . $this->bgColor['style'] . '">
+        return '<nav class="navbar navbar-expand-' . $this->toggleScreen . ' fixed-top navbar-' . $this->textColor . ' ' . $this->bgColor['class'] . ' bg-faded scrolling-navbar" style="' . $this->bgColor['style'] . '">
                     ' . ($this->containerFluid == false ? '' : '<div class="container">') . '
                         <a class="navbar-brand" href="' . base_url() . '" >
                         ' . ($this->brand == null ? $this->title : '<img src="' . base_url($this->brand) . '" width="' . ($this->brandSize == null ? '62' : $this->brandSize) . '" alt="">') . '

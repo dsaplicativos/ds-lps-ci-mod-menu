@@ -23,7 +23,7 @@ class Menu extends ORMObject{
      */
     public function getHTML($active = ''){
         $html = '<li class="nav-item ' . $active . ' ' . $this->toggle['li'] . ' ' . $this->group . '">';
-        $html .= '<a href="'.$this->menu['link'].'" class="nav-link '.$this->toggle['a'].'" '.$this->extra_data.'>'.$this->menu['label'].'&nbsp;</a>';
+        $html .= '<a href="' . base_url($this->menu['link']) . '" class="nav-link ' . $this->toggle['a'] . '" ' . $this->extra_data . '>' . $this->menu['label'] . '&nbsp;</a>';
         $html .= $this->extra_content;
         return $html.'</li>';
     }
@@ -39,19 +39,19 @@ class Menu extends ORMObject{
         if(sizeof($u) == 0) return;
         $this->toggle['li'] = 'dropdown';
         $this->toggle['a'] = 'dropdown-toggle';
-        $this->extra_data = 'id="dropdown_'.$this->menu['id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"';
-        $html = '<div class="dropdown-menu dropdown-' . $dropdownColor . '" aria-labelledby="dropdown_'.$this->menu['id'].'">';
+        $this->extra_data = 'id="dropdown_' . $this->menu['id'] . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"';
+        $html = '<div class="dropdown-menu dropdown-' . $dropdownColor . '" aria-labelledby="dropdown_' . $this->menu['id'] . '">';
         foreach($u AS $item){
             $menuitem = new MenuItem($item);
             $html .= $menuitem->getHTML();
         }
-        $this->extra_content = $html.'</div>';
+        $this->extra_content = $html . '</div>';
     }
 
     /**
      * Retorna a lista de itens deste menu
      */
-    public function getItemList(){
+    public function getItemList() {
         return $this->item_list;
     }
 
